@@ -25,19 +25,19 @@ class MrSpider(scrapy.Spider):
             numbers = "unknown"  # Fallback if no number is found
 
         # Prepare LaTeX formatted content
-        latex_content = latex_chapter_title
+        latex_content = latex_chapter_title + "\\begin{document}\n"
         for para in paragraphs:
             # Escape LaTeX special characters in the paragraph text
             para = para.replace('&', '\\&').replace('%', '\\%').replace('$', '\\$')
-            # Ensure no more than one empty line between paragraphs
-            latex_content += f"{para}\n\n".rstrip() + "\n"
+            latex_content += f"{para}\n\n"
+        latex_content += "\\end{document}"
 
         # Print to console for debugging
         print(latex_content)
 
         # Save to a .tex file
         file_name = f'{numbers}.tex'
-        with open(file_name, 'w', encoding='utf-8') as f:  # Changed 'a' to 'w' to overwrite existing content
+        with open(file_name, 'a', encoding='utf-8') as f:
             f.write(latex_content)
 
         # Find the link to the next page and follow it
