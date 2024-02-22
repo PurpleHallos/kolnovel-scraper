@@ -7,4 +7,4 @@
 - [ ] 📄 Create a PDF of the scraped text, formatted using LaTeX.
 - [ ] 🖼️ Scrap pictures and add them to the PDF.
 - [ ] 📚 Separate each volume into its own PDF.
-
+- [ ] 📝 Write documentation.
